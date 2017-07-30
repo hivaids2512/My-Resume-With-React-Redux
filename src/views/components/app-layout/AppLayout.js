@@ -1,6 +1,6 @@
 import React from "react";
-import AppToolBar from "../AppToolBar/AppToolBar";
-import AppWorkSpace from "../AppWorkSpace";
+import AppToolBar from "../app-toolbar";
+import AppWorkSpace from "../app-workspace";
 
 export default class AppLayout extends React.Component {
   constructor(props) {

@@ -1,7 +1,7 @@
 import React from "react";
 import ResumeItem from "./ResumeItem";
 import { connect } from 'react-redux';
-import { addResume } from "../../../state/actions/Resume/ResumeAction";
+import { addResume } from "../../../state/actions/resume/ResumeAction";
 import RaisedButton from 'material-ui/RaisedButton';
 
 class ResumeList extends React.Component {

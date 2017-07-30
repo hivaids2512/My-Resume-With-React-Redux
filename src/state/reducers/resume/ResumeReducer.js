@@ -1,4 +1,4 @@
-import {ADD_RESUME} from '../../actions/Resume/ActionTypes';
+import {ADD_RESUME} from '../../actions/resume/ActionTypes';
 
 const initialState = {
   data: [],

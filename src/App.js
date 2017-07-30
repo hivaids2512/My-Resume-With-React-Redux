@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import RaisedButton from 'material-ui/RaisedButton';
-import AppLayout from './views/components/AppLayout'
+import AppLayout from './views/components/app-layout'
 
 class App extends Component {
   render() {
