@@ -14,7 +14,7 @@ class ResumeList extends React.Component {
   }
 
   addNewResume (event) {
-    this.props.addResume({name: "quy"})
+    this.props.addResume({name: "quy", description: 'asd', userId: '586fd5ca161b761defc05a31'})
   } 
 
   render() {

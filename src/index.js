@@ -10,6 +10,7 @@ import store, { history } from "./state/store/StoreConfig";
 import injectTapEventPlugin from "react-tap-event-plugin";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import { Route, Router, IndexRedirect } from "react-router";
+import routes from "./routes";
 
 //Inject Tap event plugin for material ui
 injectTapEventPlugin();
@@ -20,9 +21,7 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
       <MuiThemeProvider>
-        <Route>
-          <Route path="/" component={App} />
-        </Route>
+        {routes}
       </MuiThemeProvider>
     </Router>
   </Provider>,
