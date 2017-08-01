@@ -18,13 +18,13 @@ injectTapEventPlugin();
 const target = document.querySelector("#root");
 
 ReactDOM.render(
-  <Provider store={store}>
-    <Router history={history}>
-      <MuiThemeProvider>
+  <MuiThemeProvider>
+    <Provider store={store}>
+      <Router history={history}>
         {routes}
-      </MuiThemeProvider>
-    </Router>
-  </Provider>,
+      </Router>
+    </Provider>
+  </MuiThemeProvider>,
   target
 );
 registerServiceWorker();
