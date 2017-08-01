@@ -8,7 +8,7 @@ class ResumeService {
     }
 
     getResumeList() {
-        return BaseService.get('/api/resumes/list', {})
+        return BaseService.get('/resumes', {})
     }
 
 }
