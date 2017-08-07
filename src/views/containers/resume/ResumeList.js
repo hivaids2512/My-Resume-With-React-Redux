@@ -6,12 +6,13 @@ import {
   getResumeList
 } from "../../../state/actions/resume/ResumeAction";
 import RaisedButton from "material-ui/RaisedButton";
+import CircularProgress from 'material-ui/CircularProgress';
 
 class ResumeList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      resumeList: [1, 2, 3, 4]
+      rows: []
     };
     this.addNewResume = this.addNewResume.bind(this);
   }
@@ -29,30 +30,47 @@ class ResumeList extends React.Component {
   }
 
   render() {
+    console.log(this.props.rows);
     return (
       <div>
-        <div className="row">
-          {this.props.appData.resumes?
-            this.props.appData.resumes.map((resume, index) =>
-            <div className="col-md-3">
-              <ResumeItem
-                key={index}
-                name="CodeLynx"
-                createdBy="Quy Vu"
-                description="Simple enough"
-              />
-            </div>
-          ) :""
-          }
-        </div>
+        {this.props.rows
+          ? this.props.rows.map((row, index) => {
+              return (
+                <div className="row margin-top-bottom-15">
+                  {row.map(resume => {
+                    return (
+                      <div className="col-md-3">
+                        <ResumeItem key={index} resume={resume} />
+                      </div>
+                    );
+                  })}
+                </div>
+              );
+            })
+          : <div className="center"><CircularProgress /></div>}
       </div>
     );
   }
 }
 
+function parseToRows(resumes) {
+  let rows = [];
+  if (resumes) {
+    let row = [];
+    resumes.forEach((resume, index) => {
+      row.push(resume);
+      if (row.length === 4) {
+        rows.push(row);
+        row = [];
+      }
+    });
+  }
+  return rows;
+}
+
 function mapStateToProps(state) {
   return {
-    appData: state.appData
+    rows: parseToRows(state.resumeData.resumes)
   };
 }
 

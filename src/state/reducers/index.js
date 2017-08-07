@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux'
 import { routerReducer } from 'react-router-redux'
-import appData from './resume/ResumeReducer'
+import resumeData from './resume/ResumeReducer'
+import sectionData from './section/SectionReducer'
 
 export default combineReducers({
   routing: routerReducer,
-  appData
+  resumeData,
+  sectionData
 })

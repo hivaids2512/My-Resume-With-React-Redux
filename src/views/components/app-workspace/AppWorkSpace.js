@@ -8,7 +8,7 @@ export default class AppWorkSpace extends React.Component {
   render() {
     return (
       <div>
-        <ResumeList />
+        {this.props.children}
       </div>
     );
   }
