@@ -18,6 +18,10 @@ class BaseService {
   put = (url, data) => {
     return axios.put(url, data);
   };
+
+  delete = (url, params) => {
+    return axios.delete(url, params);
+  };
 }
 
 export default new BaseService();

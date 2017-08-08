@@ -6,7 +6,8 @@ import {
   getResumeList
 } from "../../../state/actions/resume/ResumeAction";
 import RaisedButton from "material-ui/RaisedButton";
-import CircularProgress from 'material-ui/CircularProgress';
+import CircularProgress from "material-ui/CircularProgress";
+import AddResume from "./AddResume";
 
 class ResumeList extends React.Component {
   constructor(props) {
@@ -14,25 +15,16 @@ class ResumeList extends React.Component {
     this.state = {
       rows: []
     };
-    this.addNewResume = this.addNewResume.bind(this);
   }
 
   componentDidMount() {
     this.props.getResumeList();
   }
 
-  addNewResume(event) {
-    this.props.addResume({
-      name: "quy",
-      description: "asd",
-      userId: "586fd5ca161b761defc05a31"
-    });
-  }
-
   render() {
-    console.log(this.props.rows);
     return (
       <div>
+        <AddResume />
         {this.props.rows
           ? this.props.rows.map((row, index) => {
               return (
@@ -47,7 +39,9 @@ class ResumeList extends React.Component {
                 </div>
               );
             })
-          : <div className="center"><CircularProgress /></div>}
+          : <div className="center">
+              <CircularProgress />
+            </div>}
       </div>
     );
   }
@@ -70,7 +64,8 @@ function parseToRows(resumes) {
 
 function mapStateToProps(state) {
   return {
-    rows: parseToRows(state.resumeData.resumes)
+    rows: parseToRows(state.resumeData.resumes),
+    resume: state.resumeData.resume
   };
 }
 
