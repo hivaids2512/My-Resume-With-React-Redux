@@ -28,11 +28,11 @@ class ResumeList extends React.Component {
         {this.props.rows
           ? this.props.rows.map((row, index) => {
               return (
-                <div className="row margin-top-bottom-15">
+                <div className="row margin-top-bottom-15" key={index}>
                   {row.map(resume => {
                     return (
-                      <div className="col-md-3">
-                        <ResumeItem key={index} resume={resume} />
+                      <div className="col-md-3" key={resume.name}>
+                        <ResumeItem key={resume.name + index} resume={resume} />
                       </div>
                     );
                   })}
@@ -48,18 +48,12 @@ class ResumeList extends React.Component {
 }
 
 function parseToRows(resumes) {
-  let rows = [];
   if (resumes) {
-    let row = [];
-    resumes.forEach((resume, index) => {
-      row.push(resume);
-      if (row.length === 4) {
-        rows.push(row);
-        row = [];
-      }
-    });
+    let size = 4
+    return new Array(Math.ceil(resumes.length / size)).fill("")
+    .map(function() { return this.splice(0, size) }, resumes.slice());
   }
-  return rows;
+  return [];
 }
 
 function mapStateToProps(state) {

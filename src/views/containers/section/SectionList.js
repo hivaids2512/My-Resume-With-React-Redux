@@ -3,6 +3,8 @@ import SectionItem from "./SectionItem";
 import { connect } from "react-redux";
 import { getSectionList } from "../../../state/actions/section/SectionAction";
 import RaisedButton from "material-ui/RaisedButton";
+import CircularProgress from "material-ui/CircularProgress";
+import AddSection from "./AddSection";
 
 class SectionList extends React.Component {
   constructor(props) {
@@ -17,26 +19,43 @@ class SectionList extends React.Component {
   }
 
   render() {
-    console.log(this.props.sectionData.sections)
     return (
       <div>
-        <div className="row">
-          {this.props.sectionData.sections
-            ? this.props.sectionData.sections.map((section, index) =>
-                <div className="col-md-3">
-                  <SectionItem key={index} section={section} />
+        <AddSection resumeId={this.props.routeParams.resumeId} />
+        {this.props.rows
+          ? this.props.rows.map((row, index) => {
+              return (
+                <div className="row margin-top-bottom-15" key={index}>
+                  {row.map(section => {
+                    return (
+                      <div className="col-md-6" key={section.name}>
+                        <SectionItem key={section.name + index} section={section} />
+                      </div>
+                    );
+                  })}
                 </div>
-              )
-            : ""}
-        </div>
+              );
+            })
+          : <div className="center">
+              <CircularProgress />
+            </div>}
       </div>
     );
   }
 }
 
+function parseToRows(sections) {
+  if (sections) {
+    let size = 2
+    return new Array(Math.ceil(sections.length / size)).fill("")
+    .map(function() { return this.splice(0, size) }, sections.slice());
+  }
+  return [];
+}
+
 function mapStateToProps(state) {
   return {
-    sectionData: state.sectionData
+    rows: parseToRows(state.sectionData.sections)
   };
 }
 
