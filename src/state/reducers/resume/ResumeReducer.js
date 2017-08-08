@@ -20,7 +20,7 @@ export default function resumeReducer(state = initialState, action) {
       return {
         ...state,
         deletedResume: action.resume,
-        resumes: state.resumes.slice(1)
+        resumes: state.resumes.filter((resume) => { return action.resume.id !== resume.id })
       };
     default:
       return state;
