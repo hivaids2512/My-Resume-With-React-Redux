@@ -16,6 +16,7 @@ import {
   getResumeList
 } from "../../../state/actions/resume/ResumeAction";
 import { connect } from "react-redux";
+import Moment from 'react-moment';
 
 class ResumeItem extends React.Component {
   constructor(props) {
@@ -38,7 +39,7 @@ class ResumeItem extends React.Component {
       <Card expanded={true}>
         <CardTitle
           title={this.props.resume.name}
-          subtitle={this.props.resume.createdBy}
+          subtitle={<Moment fromNow>{this.props.resume.createdAt}</Moment>}
           expandable={true}
         />
         <CardText expandable={true}>

@@ -1,5 +1,6 @@
 import React from "react";
 import {Card, CardHeader, CardTitle, CardText} from 'material-ui/Card';
+import Moment from 'react-moment';
 
 export default class SectionItem extends React.Component {
   constructor(props) {
@@ -12,7 +13,7 @@ export default class SectionItem extends React.Component {
       >
         <CardTitle
           title= {this.props.section.name}
-          subtitle= {this.props.section.createdAt}
+          subtitle= {<Moment fromNow>{this.props.section.createdAt}</Moment>}
           expandable={true}
         />
         <CardText expandable={true}>
