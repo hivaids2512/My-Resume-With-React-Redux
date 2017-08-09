@@ -5,22 +5,20 @@ axios.defaults.baseURL = "https://597f701cb507e60011e19292.mockapi.io";
 //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1MDE2NzY0MjYsImlzcyI6InRlc3QifQ.75Qr-YrTHPji8WIAGsoDkEDpAIGRgId55NApE8Y_qhE";
 
 class BaseService {
-  get(url, params) {
-    return axios.get(url, {
-      params: params
-    });
+  get(url, config) {
+    return axios.get(url, config);
   }
 
-  post = (url, data) => {
-    return axios.post(url, data);
+  post = (url, data, config) => {
+    return axios.post(url, data, config);
   };
 
-  put = (url, data) => {
-    return axios.put(url, data);
+  put = (url, data, config) => {
+    return axios.put(url, data, config);
   };
 
-  delete = (url, params) => {
-    return axios.delete(url, params);
+  delete = (url, config) => {
+    return axios.delete(url, config);
   };
 }
 
