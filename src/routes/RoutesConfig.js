@@ -5,8 +5,8 @@ import SignIn from "../views/containers/sign-in";
 import SignUp from "../views/containers/sign-up";
 import ResumeList from "../views/containers/resume";
 import SectionList from "../views/containers/section";
-import { Route, Router, IndexRedirect, Redirect } from "react-router";
-import RaisedButton from "material-ui/RaisedButton";
+import { Route, IndexRedirect } from "react-router";
+
 const routes = (
   <Route>
     <Route path="/" component={App}>

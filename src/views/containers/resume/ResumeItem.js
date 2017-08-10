@@ -2,13 +2,9 @@ import React from "react";
 import {
   Card,
   CardActions,
-  CardHeader,
   CardTitle,
   CardText
 } from "material-ui/Card";
-import FontIcon from "material-ui/FontIcon";
-import IconButton from "material-ui/IconButton";
-import ActionHome from "material-ui/svg-icons/action/home";
 import FlatButton from "material-ui/FlatButton";
 import { browserHistory } from "react-router";
 import {

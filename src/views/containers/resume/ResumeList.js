@@ -5,7 +5,6 @@ import {
   addResume,
   getResumeList
 } from "../../../state/actions/resume/ResumeAction";
-import RaisedButton from "material-ui/RaisedButton";
 import CircularProgress from "material-ui/CircularProgress";
 import AddResume from "./AddResume";
 

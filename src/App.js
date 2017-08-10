@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import AppToolBar from "./views/components/app-toolbar";
-import AppWorkSpace from "./views/components/app-workspace";
 
 class App extends Component {
   render() {
