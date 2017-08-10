@@ -2,29 +2,29 @@ import React from "react";
 import TextField from "material-ui/TextField";
 import RaisedButton from "material-ui/RaisedButton";
 import { connect } from "react-redux";
-import { authenticate } from "../../../state/actions/sign-in/SignInAction";
+import { register } from "../../../state/actions/sign-up/SignUpAction";
 import { browserHistory } from "react-router";
 
-class SignIn extends React.Component {
+class SignUp extends React.Component {
   constructor(props) {
     super(props);
-    this.authenticate = this.authenticate.bind(this);
+    this.register = this.register.bind(this);
   }
 
-  authenticate() {
-    if (this.refs.email.getValue() && this.refs.password.getValue()) {
-      this.props.authenticate({
-        email: this.refs.email.getValue(),
-        password: this.refs.password.getValue()
-      });
+  register() {
+    if (this.refs.email.getValue() && this.refs.password.getValue() && this.refs.repassword.getValue()) {
+        if(this.refs.password.getValue() === this.refs.repassword.getValue()) {
+            this.props.register({
+                email: this.refs.email.getValue(),
+                password: this.refs.password.getValue()
+            });
+        }
     }
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (this.props.user) {
-      localStorage.setItem("access-token", "token")
-      localStorage.setItem("user", this.props.user)
-      browserHistory.push("/workspace/resumes/")
+    if (this.props.registeredUser) {
+      browserHistory.push("/signin")
     } else {
       alert("nit auth");
     }
@@ -42,7 +42,7 @@ class SignIn extends React.Component {
         <div className="modal-dialog modal-sm">
           <div className="modal-content">
             <div className="modal-header">
-              <h3 className="text-center">Login</h3>
+              <h3 className="text-center">Register Account</h3>
             </div>
             <div className="modal-body">
               <div className="form-group">
@@ -51,12 +51,15 @@ class SignIn extends React.Component {
               <div className="form-group">
                 <TextField ref="password" hintText="Password" type="password" />
               </div>
+              <div className="form-group">
+                <TextField ref="repassword" hintText="Retype Password" type="password" />
+              </div>
             </div>
             <div className="modal-footer">
               <div className="col-md-12">
                 <RaisedButton
-                  onTouchTap={this.authenticate}
-                  label="Sign in"
+                  onTouchTap={this.register}
+                  label="Sign Up"
                   primary={true}
                 />
               </div>
@@ -69,15 +72,16 @@ class SignIn extends React.Component {
 }
 
 function mapStateToProps(state) {
+    console.log(state.signUpData.registeredUser)
   return {
-    user: state.signInData.user
+    registeredUser: state.signUpData.registeredUser
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    authenticate: user => dispatch(authenticate(user))
+    register: user => dispatch(register(user))
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
