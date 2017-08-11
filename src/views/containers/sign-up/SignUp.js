@@ -56,7 +56,10 @@ class SignUp extends React.Component {
               </div>
             </div>
             <div className="modal-footer">
-              <div className="col-md-12">
+              <div className="col-md-6">
+                <a href="signin" style={{float: 'left'}}>Signin</a>
+              </div>
+              <div className="col-md-6">
                 <RaisedButton
                   onTouchTap={this.register}
                   label="Sign Up"

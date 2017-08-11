@@ -1,2 +1,4 @@
 export const SECTION_LIST = 'SECTION_LIST'
 export const ADD_SECTION = 'ADD_SECTION'
+export const REMOVE_SECTION = 'REMOVE_SECTION'
+export const EDIT_SECTION = 'EDIT_SECTION'

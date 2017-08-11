@@ -16,6 +16,15 @@ class SectionService {
   getSectionList(resumeId) {
     return BaseService.get("/resumes/" + resumeId + "/sections", config);
   }
+
+  removeSection(resumeId, section) {
+    return BaseService.delete("/resumes/" + resumeId + "/sections/" + section.id, config);
+  }
+
+  editSection(resumeId, section) {
+    return BaseService.put("/resumes/" + resumeId + "/sections/" + section.id, section, config)
+  }
+
 }
 
 export default new SectionService();

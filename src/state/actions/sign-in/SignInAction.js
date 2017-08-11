@@ -12,10 +12,10 @@ export function authenticate(user) {
   return dispatch => {
     AuthService.authenticate(user)
       .then(res => {
-        dispatch(authenticateAction(user));
+        dispatch(authenticateAction(res));
       })
       .catch(err => {
-        dispatch(authenticateAction(user));
+        console.log(err)
       });
   };
 }

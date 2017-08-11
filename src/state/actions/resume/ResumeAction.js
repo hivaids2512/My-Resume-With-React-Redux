@@ -1,4 +1,4 @@
-import { ADD_RESUME, RESUME_LIST, REMOVE_RESUME } from "./ActionTypes";
+import { ADD_RESUME, RESUME_LIST, REMOVE_RESUME, EDIT_RESUME } from "./ActionTypes";
 import ResumeService from "../../../services/ResumeService";
 
 const addResumeAction = resume => {
@@ -22,6 +22,13 @@ const removeResumeAction = resume => {
   };
 };
 
+const editResumeAction = resume => {
+  return {
+    type: EDIT_RESUME,
+    resume
+  };
+};
+
 export function addResume(resume) {
   return dispatch => {
     ResumeService.createResume(resume)
@@ -39,6 +46,18 @@ export function removeResume(resume) {
     ResumeService.removeResume(resume)
       .then(res => {
         dispatch(removeResumeAction(resume));
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+}
+
+export function editResume(resume) {
+  return dispatch => {
+    ResumeService.editResume(resume)
+      .then(res => {
+        dispatch(editResumeAction(resume));
       })
       .catch(err => {
         console.log(err);

@@ -16,6 +16,10 @@ class ResumeService {
   removeResume(resume) {
     return BaseService.delete("/resumes/" + resume.id, config);
   }
+
+  editResume(resume) {
+    return BaseService.put("/resumes/" + resume.id, resume, config)
+  }
 }
 
 export default new ResumeService();

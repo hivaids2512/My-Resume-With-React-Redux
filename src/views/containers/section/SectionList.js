@@ -25,7 +25,7 @@ class SectionList extends React.Component {
                   {row.map(section => {
                     return (
                       <div className="col-md-6" key={section.name}>
-                        <SectionItem key={section.name + index} section={section} />
+                        <SectionItem resumeId={this.props.routeParams.resumeId} key={section.name + index} section={section} />
                       </div>
                     );
                   })}
@@ -50,6 +50,7 @@ function parseToRows(sections) {
 }
 
 function mapStateToProps(state) {
+  console.log(state.sectionData.sections)
   return {
     rows: parseToRows(state.sectionData.sections)
   };

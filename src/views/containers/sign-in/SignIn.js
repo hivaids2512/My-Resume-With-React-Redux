@@ -8,7 +8,7 @@ import { browserHistory } from "react-router";
 class SignIn extends React.Component {
   constructor(props) {
     super(props);
-    this.authenticate = this.authenticate.bind(this);
+    this.authenticate = this.authenticate.bind(this)
   }
 
   authenticate() {
@@ -22,8 +22,8 @@ class SignIn extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (this.props.user) {
-      localStorage.setItem("access-token", "token")
-      localStorage.setItem("user", this.props.user)
+      localStorage.setItem("access-token", this.props.user['access-token'])
+      localStorage.setItem("user", JSON.stringify(this.props.user))
       browserHistory.push("/workspace/resumes/")
     } else {
       alert("nit auth");
@@ -53,7 +53,10 @@ class SignIn extends React.Component {
               </div>
             </div>
             <div className="modal-footer">
-              <div className="col-md-12">
+              <div className="col-md-6">
+                <a href="signup" style={{float: 'left'}}>Register</a>
+              </div>
+              <div className="col-md-6">
                 <RaisedButton
                   onTouchTap={this.authenticate}
                   label="Sign in"

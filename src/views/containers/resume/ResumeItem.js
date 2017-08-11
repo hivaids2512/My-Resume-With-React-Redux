@@ -1,6 +1,5 @@
 import React from "react";
 import { Card, CardActions, CardTitle, CardText } from "material-ui/Card";
-import FlatButton from "material-ui/FlatButton";
 import { browserHistory } from "react-router";
 import {
   removeResume,
@@ -8,9 +7,8 @@ import {
 } from "../../../state/actions/resume/ResumeAction";
 import { connect } from "react-redux";
 import Moment from "react-moment";
-import UploadIcon from "material-ui/svg-icons/file/file-upload";
 import IconButton from "material-ui/IconButton";
-import RaisedButton from "material-ui/RaisedButton";
+import EditResume from "./EditResume";
 
 class ResumeItem extends React.Component {
   constructor(props) {
@@ -18,13 +16,13 @@ class ResumeItem extends React.Component {
     this.handleView = this.handleView.bind(this);
   }
 
-  handleView = (event) => {
+  handleView = event => {
     browserHistory.push(
       "/workspace/resumes/" + this.props.resume.id + "/sections"
     );
   };
 
-  handleDelete = (event) => {
+  handleDelete = event => {
     this.props.removeResume(this.props.resume);
   };
 
@@ -44,12 +42,23 @@ class ResumeItem extends React.Component {
           {this.props.resume.description}
         </CardText>
         <CardActions>
-          <IconButton onTouchTap={this.handleView}>
-            <i className="material-icons font-size-18">border_color</i>
-          </IconButton>
-          <IconButton onTouchTap={this.handleDelete}>
-            <i className="material-icons font-size-18">delete</i>
-          </IconButton>
+          <div className="inline">
+            <IconButton
+              onTouchTap={this.handleView}
+              tooltip="view"
+              tooltipPosition="bottom-center"
+            >
+              <i className="material-icons font-size-18">touch_app</i>
+            </IconButton>
+            <EditResume resume={this.props.resume} />
+            <IconButton
+              onTouchTap={this.handleDelete}
+              tooltip="delete"
+              tooltipPosition="bottom-center"
+            >
+              <i className="material-icons font-size-18">delete</i>
+            </IconButton>
+          </div>
         </CardActions>
       </Card>
     );
