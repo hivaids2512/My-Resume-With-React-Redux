@@ -12,7 +12,7 @@ export function authenticate(user) {
   return dispatch => {
     AuthService.authenticate(user)
       .then(res => {
-        dispatch(authenticateAction(res));
+        dispatch(authenticateAction(res.data));
       })
       .catch(err => {
         console.log(err)

@@ -12,6 +12,7 @@ class AppAvatar extends React.Component {
   }
 
   render() {
+    console.log(this.state.user)
     return (
       <List>
         <ListItem
