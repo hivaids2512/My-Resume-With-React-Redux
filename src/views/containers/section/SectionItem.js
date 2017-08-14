@@ -32,21 +32,23 @@ class SectionItem extends React.Component {
         <CardText expandable={true}>
           {this.props.section.description}
         </CardText>
-        <CardActions>
-          <div className="inline">
-            <EditSection
-              section={this.props.section}
-              resumeId={this.props.resumeId}
-            />
-            <IconButton
-              onTouchTap={this.handleDelete}
-              tooltip="delete"
-              tooltipPosition="bottom-center"
-            >
-              <i className="material-icons font-size-18">delete</i>
-            </IconButton>
-          </div>
-        </CardActions>
+        {!this.props.actionsDisabled
+          ? <CardActions>
+              <div className="inline">
+                <EditSection
+                  section={this.props.section}
+                  resumeId={this.props.resumeId}
+                />
+                <IconButton
+                  onTouchTap={this.handleDelete}
+                  tooltip="delete"
+                  tooltipPosition="bottom-center"
+                >
+                  <i className="material-icons font-size-18">delete</i>
+                </IconButton>
+              </div>
+            </CardActions>
+          : ""}
       </Card>
     );
   }

@@ -1,22 +1,25 @@
 import React from "react";
-import SectionItem from "./SectionItem";
 import { connect } from "react-redux";
-import { getSectionList } from "../../../state/actions/section/SectionAction";
+import { getPublicResume } from "../../../state/actions/public-resume/PublicResumeAction";
+import SectionItem from "../section/SectionItem";
 import CircularProgress from "material-ui/CircularProgress";
-import AddSection from "./AddSection";
 
-class SectionList extends React.Component {
+class PublicResume extends React.Component {
   componentDidMount() {
     let resumeId = this.props.routeParams.resumeId;
     if (resumeId) {
-      this.props.getSectionList(resumeId);
+      this.props.getPublicResume(resumeId);
     }
   }
 
   render() {
     return (
-      <div>
-        <AddSection resumeId={this.props.routeParams.resumeId} />
+      <div className="container-fluid" style={{ margin: "20px" }}>
+        <div className="row">
+          <h1>
+            {this.props.publicResume ? this.props.publicResume.name : ""}
+          </h1>
+        </div>
         {this.props.rows
           ? this.props.rows.map((row, index) => {
               return (
@@ -28,7 +31,7 @@ class SectionList extends React.Component {
                           resumeId={this.props.routeParams.resumeId}
                           key={section.name + index}
                           section={section}
-                          actionsDisabled = {false}
+                          actionsDisabled={true}
                         />
                       </div>
                     );
@@ -57,15 +60,20 @@ function parseToRows(sections) {
 }
 
 function mapStateToProps(state) {
+  let rows = [];
+  if (state.publicResumeData.publicResume) {
+    rows = state.publicResumeData.publicResume.sections;
+  }
   return {
-    rows: parseToRows(state.sectionData.sections)
+    rows: parseToRows(rows),
+    publicResume: state.publicResumeData.publicResume
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    getSectionList: resumeId => dispatch(getSectionList(resumeId))
+    getPublicResume: resumeId => dispatch(getPublicResume(resumeId))
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SectionList);
+export default connect(mapStateToProps, mapDispatchToProps)(PublicResume);

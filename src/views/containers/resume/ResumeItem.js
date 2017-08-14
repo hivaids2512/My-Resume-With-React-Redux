@@ -9,7 +9,7 @@ import { connect } from "react-redux";
 import Moment from "react-moment";
 import IconButton from "material-ui/IconButton";
 import EditResume from "./EditResume";
-import PublicResume from './PublicResume'
+import PublicResume from "./PublicResume";
 
 class ResumeItem extends React.Component {
   constructor(props) {
@@ -59,7 +59,7 @@ class ResumeItem extends React.Component {
             >
               <i className="material-icons font-size-18">delete</i>
             </IconButton>
-            <PublicResume />
+            <PublicResume resume={this.props.resume} />
           </div>
         </CardActions>
       </Card>
