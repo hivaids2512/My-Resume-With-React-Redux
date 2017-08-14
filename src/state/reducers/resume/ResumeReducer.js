@@ -1,4 +1,4 @@
-import { ADD_RESUME, RESUME_LIST, REMOVE_RESUME, EDIT_RESUME } from "../../actions/resume/ActionTypes";
+import { ADD_RESUME, RESUME_LIST, REMOVE_RESUME, EDIT_RESUME, PUBLIC_RESUME } from "../../actions/resume/ActionTypes";
 
 const initialState = {};
 
@@ -26,6 +26,12 @@ export default function resumeReducer(state = initialState, action) {
       return {
         ...state,
         editedResume: action.resume,
+        resumes: state.resumes
+      };
+    case PUBLIC_RESUME:
+      return {
+        ...state,
+        publicedResume: action.resume,
         resumes: state.resumes
       };
     default:

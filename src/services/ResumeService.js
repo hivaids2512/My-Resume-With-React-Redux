@@ -20,6 +20,10 @@ class ResumeService {
   editResume(resume) {
     return BaseService.put("/resumes/" + resume.id, resume, config)
   }
+
+  publicResume(resume) {
+    return BaseService.put("/resumes/public/" + resume.id, resume, config)
+  }
 }
 
 export default new ResumeService();
