@@ -40,10 +40,10 @@ export function addResume(resume) {
   return dispatch => {
     ResumeService.createResume(resume)
       .then(res => {
-        dispatch(addResumeAction(resume));
+        dispatch(addResumeAction(res.data));
       })
       .catch(err => {
-        dispatch(addResumeAction(resume));
+        console.log(err)
       });
   };
 }

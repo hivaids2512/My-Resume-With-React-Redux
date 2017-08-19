@@ -17,18 +17,18 @@ class SectionList extends React.Component {
     return (
       <div>
         <AddSection resumeId={this.props.routeParams.resumeId} />
-        {this.props.rows
+        {this.props.rows && this.props.rows.length > 0
           ? this.props.rows.map((row, index) => {
               return (
                 <div className="row margin-top-bottom-15" key={index}>
                   {row.map(section => {
                     return (
-                      <div className="col-md-6" key={section.name}>
+                      <div className="col-md-6" key={section.title}>
                         <SectionItem
                           resumeId={this.props.routeParams.resumeId}
                           key={section.name + index}
                           section={section}
-                          actionsDisabled = {false}
+                          actionsDisabled={false}
                         />
                       </div>
                     );
@@ -37,7 +37,7 @@ class SectionList extends React.Component {
               );
             })
           : <div className="center">
-              <CircularProgress />
+              <h3>You have no section :)</h3>
             </div>}
       </div>
     );

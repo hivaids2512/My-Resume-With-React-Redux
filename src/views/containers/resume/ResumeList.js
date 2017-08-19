@@ -24,7 +24,7 @@ class ResumeList extends React.Component {
     return (
       <div>
         <AddResume />
-        {this.props.rows
+        {this.props.rows  && this.props.rows.length > 0
           ? this.props.rows.map((row, index) => {
               return (
                 <div className="row margin-top-bottom-15" key={index}>
@@ -39,7 +39,7 @@ class ResumeList extends React.Component {
               );
             })
           : <div className="center">
-              <CircularProgress />
+              <h3>You have no Reume :)</h3>
             </div>}
       </div>
     );

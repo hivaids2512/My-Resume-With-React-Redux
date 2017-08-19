@@ -1,7 +1,7 @@
 import BaseService from "./BaseService";
 
 let config = {
-  //headers: { Authorization: "Au" }
+  headers: { Authorization: localStorage.getItem("access-token") }
 };
 
 class ResumeService {
@@ -14,15 +14,15 @@ class ResumeService {
   }
 
   removeResume(resume) {
-    return BaseService.delete("/resumes/" + resume.id, config);
+    return BaseService.delete("/resumes/" + resume._id, config);
   }
 
   editResume(resume) {
-    return BaseService.put("/resumes/" + resume.id, resume, config)
+    return BaseService.put("/resumes/" + resume._id, resume, config)
   }
 
   publicResume(resume) {
-    return BaseService.put("/resumes/public/" + resume.id, resume, config)
+    return BaseService.put("/resumes/public/" + resume._id, resume, config)
   }
 }
 

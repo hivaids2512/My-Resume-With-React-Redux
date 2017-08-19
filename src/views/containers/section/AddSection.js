@@ -25,10 +25,12 @@ class AddSection extends React.Component {
 
   handleSubmit = () => {
     let resumeId = this.props.resumeId;
-    if (this.refs.name.getValue() && this.refs.description.getValue()) {
+    if (this.refs.title.getValue() && this.refs.content.getValue()) {
       this.props.addSection(resumeId, {
-        name: this.refs.name.getValue(),
-        description: this.refs.description.getValue()
+        title: this.refs.title.getValue(),
+        description: this.refs.description.getValue(),
+        content: this.refs.content.getValue(),
+        resume: this.props.resumeId
       });
       this.setState({ open: false });
     }
@@ -64,9 +66,9 @@ class AddSection extends React.Component {
           onRequestClose={this.handleClose}
         >
           <TextField
-            ref="name"
+            ref="title"
             onChange={this.handleChange}
-            hintText="Section name"
+            hintText="Section title"
             fullWidth={true}
           />
           <br />
@@ -74,6 +76,12 @@ class AddSection extends React.Component {
             ref="description"
             onChange={this.handleChange}
             hintText="Description"
+            fullWidth={true}
+          />
+          <TextField
+            ref="content"
+            onChange={this.handleChange}
+            hintText="Content"
             fullWidth={true}
           />
         </Dialog>

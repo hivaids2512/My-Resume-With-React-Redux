@@ -33,10 +33,10 @@ export function addSection(resumeId, section) {
   return dispatch => {
     SectionService.createSection(resumeId, section)
       .then(res => {
-        dispatch(addSectionAction(section));
+        dispatch(addSectionAction(res.data));
       })
       .catch(err => {
-        dispatch(addSectionAction(section));
+        console.log(err)
       });
   };
 }

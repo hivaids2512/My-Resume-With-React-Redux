@@ -19,7 +19,7 @@ class ResumeItem extends React.Component {
 
   handleView = event => {
     browserHistory.push(
-      "/workspace/resumes/" + this.props.resume.id + "/sections"
+      "/workspace/resumes/" + this.props.resume._id + "/sections"
     );
   };
 

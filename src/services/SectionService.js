@@ -1,13 +1,13 @@
 import BaseService from "./BaseService";
 
 let config = {
- // headers: { Authorization: "Au" }
+ headers: { Authorization: localStorage.getItem("access-token") }
 };
 
 class SectionService {
   createSection(resumeId, section) {
     return BaseService.post(
-      "/api/resumes/" + resumeId + "/sections",
+      "/resumes/" + resumeId + "/sections",
       section,
       config
     );
@@ -18,11 +18,11 @@ class SectionService {
   }
 
   removeSection(resumeId, section) {
-    return BaseService.delete("/resumes/" + resumeId + "/sections/" + section.id, config);
+    return BaseService.delete("/resumes/" + resumeId + "/sections/" + section._id, config);
   }
 
   editSection(resumeId, section) {
-    return BaseService.put("/resumes/" + resumeId + "/sections/" + section.id, section, config)
+    return BaseService.put("/resumes/" + resumeId + "/sections/" + section._id, section, config)
   }
 
 }

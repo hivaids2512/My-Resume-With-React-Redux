@@ -21,7 +21,7 @@ class SectionItem extends React.Component {
     return (
       <Card expanded={true}>
         <CardTitle
-          title={this.props.section.name}
+          title={this.props.section.title}
           subtitle={
             <Moment fromNow>
               {this.props.section.createdAt}
@@ -30,7 +30,7 @@ class SectionItem extends React.Component {
           expandable={true}
         />
         <CardText expandable={true}>
-          {this.props.section.description}
+          {this.props.section.content}
         </CardText>
         {!this.props.actionsDisabled
           ? <CardActions>

@@ -31,7 +31,7 @@ class EditSection extends React.Component {
   };
 
   handleSubmit = () => {
-    if (this.refs.name.getValue() && this.refs.description.getValue()) {
+    if (this.refs.title.getValue() && this.refs.content.getValue()) {
       this.props.editSection(this.props.resumeId, this.state.section);
       this.setState({ open: false });
     }
@@ -68,10 +68,10 @@ class EditSection extends React.Component {
           onRequestClose={this.handleClose}
         >
           <TextField
-            ref="name"
-            id="name"
-            onChange={this.handleChange("name")}
-            value={this.state.section.name}
+            ref="title"
+            id="title"
+            onChange={this.handleChange("title")}
+            value={this.state.section.title}
             fullWidth={true}
           />
           <br />
@@ -80,6 +80,13 @@ class EditSection extends React.Component {
             id="description"
             onChange={this.handleChange("description")}
             value={this.state.section.description}
+            fullWidth={true}
+          />
+          <TextField
+            ref="content"
+            id="content"
+            onChange={this.handleChange("content")}
+            value={this.state.section.content}
             fullWidth={true}
           />
         </Dialog>

@@ -16,7 +16,9 @@ class SignUp extends React.Component {
         if(this.refs.password.getValue() === this.refs.repassword.getValue()) {
             this.props.register({
                 email: this.refs.email.getValue(),
-                password: this.refs.password.getValue()
+                password: this.refs.password.getValue(),
+                firstName: this.refs.firstName.getValue(),
+                lastName: this.refs.lastName.getValue()
             });
         }
     }
@@ -53,6 +55,12 @@ class SignUp extends React.Component {
               </div>
               <div className="form-group">
                 <TextField ref="repassword" hintText="Retype Password" type="password" />
+              </div>
+              <div className="form-group">
+                <TextField ref="firstName" hintText="FirstName" type="text" />
+              </div>
+              <div className="form-group">
+                <TextField ref="lastName" hintText="LastName" type="text" />
               </div>
             </div>
             <div className="modal-footer">

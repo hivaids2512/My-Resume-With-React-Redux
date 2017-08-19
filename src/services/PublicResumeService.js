@@ -1,7 +1,7 @@
 import BaseService from "./BaseService";
 
 let config = {
- // headers: { Authorization: "Au" }
+  headers: { Authorization: localStorage.getItem("access-token") }
 };
 
 class PublicResumeService {

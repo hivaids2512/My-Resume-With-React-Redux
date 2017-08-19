@@ -25,7 +25,8 @@ export default class AppToolBar extends React.Component {
   handleChange = (event, index, value) => this.setState({value});
 
   handleLogoutClick (event) {
-    localStorage.clear()
+    localStorage.removeItem("user")
+    localStorage.removeItem("access-token")
     browserHistory.push('/signin')
   }
 

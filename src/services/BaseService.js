@@ -1,6 +1,6 @@
 import axios from "axios";
 
-axios.defaults.baseURL = "https://597f701cb507e60011e19292.mockapi.io";
+axios.defaults.baseURL = "http://54.255.179.68:8080/api";
 // axios.defaults.headers.common["Access-Token"] =
 //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1MDE2NzY0MjYsImlzcyI6InRlc3QifQ.75Qr-YrTHPji8WIAGsoDkEDpAIGRgId55NApE8Y_qhE";
 
