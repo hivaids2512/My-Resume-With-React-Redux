@@ -1,28 +1,24 @@
 import BaseService from "./BaseService";
 
-let config = {
-  headers: { Authorization: localStorage.getItem("access-token") }
-};
-
 class ResumeService {
   createResume(resume) {
-    return BaseService.post("/resumes", resume, config);
+    return BaseService.post("/resumes", resume, BaseService.getConfigurationHeader());
   }
 
   getResumeList() {
-    return BaseService.get("/resumes", config);
+    return BaseService.get("/resumes", BaseService.getConfigurationHeader());
   }
 
   removeResume(resume) {
-    return BaseService.delete("/resumes/" + resume._id, config);
+    return BaseService.delete("/resumes/" + resume._id, BaseService.getConfigurationHeader());
   }
 
   editResume(resume) {
-    return BaseService.put("/resumes/" + resume._id, resume, config)
+    return BaseService.put("/resumes/" + resume._id, resume, BaseService.getConfigurationHeader())
   }
 
   publicResume(resume) {
-    return BaseService.put("/resumes/public/" + resume._id, resume, config)
+    return BaseService.put("/resumes/public/" + resume._id, resume, BaseService.getConfigurationHeader())
   }
 }
 

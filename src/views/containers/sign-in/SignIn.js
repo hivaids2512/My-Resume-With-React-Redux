@@ -22,8 +22,6 @@ class SignIn extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (this.props.user) {
-      localStorage.setItem("access-token", this.props.user['token'])
-      localStorage.setItem("user", JSON.stringify(this.props.user.data))
       browserHistory.push("/workspace/resumes/")
     } else {
       alert("nit auth");

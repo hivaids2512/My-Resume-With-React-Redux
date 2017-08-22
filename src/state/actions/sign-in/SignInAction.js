@@ -12,7 +12,11 @@ export function authenticate(user) {
   return dispatch => {
     AuthService.authenticate(user)
       .then(res => {
-        dispatch(authenticateAction(res.data));
+        if(res.data.success) {
+          localStorage.setItem("access-token", res.data.token)
+          localStorage.setItem("user", JSON.stringify(res.data.data))
+          dispatch(authenticateAction(res.data));
+        }
       })
       .catch(err => {
         console.log(err)

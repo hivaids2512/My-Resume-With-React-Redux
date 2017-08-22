@@ -7,7 +7,7 @@ let config = {
 class PublicResumeService {
   
   getPublicResume(resumeId) {
-    return BaseService.get("/public/" + resumeId, config);
+    return BaseService.get("/public/" + resumeId, BaseService.getConfigurationHeader());
   }
 }
 

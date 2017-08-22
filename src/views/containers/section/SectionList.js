@@ -17,7 +17,7 @@ class SectionList extends React.Component {
     return (
       <div>
         <AddSection resumeId={this.props.routeParams.resumeId} />
-        {this.props.rows && this.props.rows.length > 0
+        {this.props.rows.length > 0
           ? this.props.rows.map((row, index) => {
               return (
                 <div className="row margin-top-bottom-15" key={index}>

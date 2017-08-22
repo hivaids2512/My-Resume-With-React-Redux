@@ -20,6 +20,12 @@ class BaseService {
   delete = (url, config) => {
     return axios.delete(url, config);
   };
+
+  getConfigurationHeader = () => {
+    return {
+      headers: { Authorization: localStorage.getItem("access-token") }
+    };
+  };
 }
 
 export default new BaseService();

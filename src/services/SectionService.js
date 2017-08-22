@@ -1,28 +1,24 @@
 import BaseService from "./BaseService";
 
-let config = {
- headers: { Authorization: localStorage.getItem("access-token") }
-};
-
 class SectionService {
   createSection(resumeId, section) {
     return BaseService.post(
       "/resumes/" + resumeId + "/sections",
       section,
-      config
+      BaseService.getConfigurationHeader()
     );
   }
 
   getSectionList(resumeId) {
-    return BaseService.get("/resumes/" + resumeId + "/sections", config);
+    return BaseService.get("/resumes/" + resumeId + "/sections", BaseService.getConfigurationHeader());
   }
 
   removeSection(resumeId, section) {
-    return BaseService.delete("/resumes/" + resumeId + "/sections/" + section._id, config);
+    return BaseService.delete("/resumes/" + resumeId + "/sections/" + section._id, BaseService.getConfigurationHeader());
   }
 
   editSection(resumeId, section) {
-    return BaseService.put("/resumes/" + resumeId + "/sections/" + section._id, section, config)
+    return BaseService.put("/resumes/" + resumeId + "/sections/" + section._id, section, BaseService.getConfigurationHeader())
   }
 
 }
