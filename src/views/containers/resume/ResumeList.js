@@ -5,7 +5,6 @@ import {
   addResume,
   getResumeList
 } from "../../../state/actions/resume/ResumeAction";
-import CircularProgress from "material-ui/CircularProgress";
 import AddResume from "./AddResume";
 
 class ResumeList extends React.Component {

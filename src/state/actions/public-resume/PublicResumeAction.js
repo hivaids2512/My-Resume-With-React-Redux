@@ -12,10 +12,12 @@ export function getPublicResume(resumeId) {
   return dispatch => {
     PublicResumeService.getPublicResume(resumeId)
       .then(res => {
-        dispatch(getPublicResumeAction(res.data));
+        if (res.status === 200) {
+          dispatch(getPublicResumeAction(res.data));
+        }
       })
       .catch(err => {
-        console.log(err)
+        console.log(err);
       });
   };
 }

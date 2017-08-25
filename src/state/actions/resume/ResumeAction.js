@@ -96,10 +96,12 @@ export function publicResume(resume) {
   return dispatch => {
     ResumeService.publicResume(resume)
       .then(res => {
-        dispatch(publicResumeAction(resume));
+        if(res.status === 200) {
+          dispatch(publicResumeAction(res.data));
+        }    
       })
       .catch(err => {
-        dispatch(publicResumeAction(resume));
+        console.log(err)
       });
   };
 }

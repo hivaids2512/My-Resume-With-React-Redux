@@ -26,7 +26,7 @@ class PublicResume extends React.Component {
                 <div className="row margin-top-bottom-15" key={index}>
                   {row.map(section => {
                     return (
-                      <div className="col-md-6" key={section.name}>
+                      <div className="col-md-6" key={section._id}>
                         <SectionItem
                           resumeId={this.props.routeParams.resumeId}
                           key={section.name + index}

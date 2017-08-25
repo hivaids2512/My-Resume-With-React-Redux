@@ -2,7 +2,6 @@ import React from "react";
 import SectionItem from "./SectionItem";
 import { connect } from "react-redux";
 import { getSectionList } from "../../../state/actions/section/SectionAction";
-import CircularProgress from "material-ui/CircularProgress";
 import AddSection from "./AddSection";
 
 class SectionList extends React.Component {

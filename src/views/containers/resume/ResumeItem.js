@@ -60,6 +60,9 @@ class ResumeItem extends React.Component {
               <i className="material-icons font-size-18">delete</i>
             </IconButton>
             <PublicResume resume={this.props.resume} />
+            <p style={{ "marginTop": "15px" }}>
+              {this.props.resume.status}
+            </p>
           </div>
         </CardActions>
       </Card>
